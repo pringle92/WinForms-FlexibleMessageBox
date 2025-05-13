@@ -67,8 +67,9 @@ if (result.DialogResult == DialogResult.Yes)
     // Perform deletion
 }
 ```
-### 3. Using the Fluent Builder (Recommended for Advanced Features)The builder pattern provides a clean and readable way to configure all features.FlexibleDialogResult result = FlexibleMessageBox.Create()
-   ```CSharp
+### 3. Using the Fluent Builder (Recommended for Advanced Features)The builder pattern provides a clean and readable way to configure all features.
+```csharp      
+   FlexibleDialogResult result = FlexibleMessageBox.Create()
     .SetCaption("User Registration")
     .SetText("Please enter your desired username and password.")
     .WithIcon(MessageBoxIcon.Information)
@@ -85,8 +86,11 @@ if (result.DialogResult == DialogResult.OK)
     // A better way for multiple inputs is to use callbacks to retrieve values.
 }
 ```
-```CSharp
-### 4. Feature Examples with BuilderRTF Textstring rtf = @"{\rtf1\ansi This is \b bold\b0 and this is \i italic\i0.}"
+
+### 4. Feature Examples with BuilderRTF 
+```csharp
+
+Textstring rtf = @"{\rtf1\ansi This is \b bold\b0 and this is \i italic\i0.}"
 
 FlexibleMessageBox.Create()
     .SetCaption("RTF Example")
@@ -207,14 +211,14 @@ FlexibleMessageBox.Create()
     .Show();
 ```
 ### 5. LocalizationButton texts can be localized. The FlexibleMessageBox.ButtonTexts dictionary is public static readonly but its content (the string arrays) can be modified if needed, or new LanguageID entries can be added.
-```CSharp
+```csharp
 // Example: Adding French translations (before showing any message box)
 // Ensure FlexibleMessageBox.LanguageID enum has 'fr'
 FlexibleMessageBox.ButtonTexts.Add(FlexibleMessageBox.LanguageID.fr, new[] { "OK", "Annuler", "&Oui", "&Non", ... }); 
 // The message box automatically uses CultureInfo.CurrentUICulture to select the language.
 ```
 ## Credits
-- Original Author: Jörg Reichert
-- Contributors: David Hall, Roink
-- RTF Mod Author: Chris Pringle
-- Enhanced Version (v2.0): Chris Pringle
+- ### Original Author: **Jörg Reichert**
+- ### Contributors: **David Hall**, **Roink**
+- ### RTF Mod Author: **Chris Pringle**
+- ### Enhanced Version (v2.0): **Chris Pringle**
