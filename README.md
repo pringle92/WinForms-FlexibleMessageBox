@@ -66,7 +66,9 @@ if (result.DialogResult == DialogResult.Yes)
 {
     // Perform deletion
 }
-3. Using the Fluent Builder (Recommended for Advanced Features)The builder pattern provides a clean and readable way to configure all features.FlexibleDialogResult result = FlexibleMessageBox.Create()
+```
+### 3. Using the Fluent Builder (Recommended for Advanced Features)The builder pattern provides a clean and readable way to configure all features.FlexibleDialogResult result = FlexibleMessageBox.Create()
+   ```CSharp
     .SetCaption("User Registration")
     .SetText("Please enter your desired username and password.")
     .WithIcon(MessageBoxIcon.Information)
@@ -82,12 +84,15 @@ if (result.DialogResult == DialogResult.OK)
     // For now, result.InputText will contain the text from the *last* added textbox if multiple are used without custom handling.
     // A better way for multiple inputs is to use callbacks to retrieve values.
 }
-4. Feature Examples with BuilderRTF Textstring rtf = @"{\rtf1\ansi This is \b bold\b0 and this is \i italic\i0.}";
+```
+### 4. Feature Examples with BuilderRTF Textstring rtf = @"{\rtf1\ansi This is \b bold\b0 and this is \i italic\i0.}";
+```CSharp
 FlexibleMessageBox.Create()
     .SetCaption("RTF Example")
     .SetRtfText(rtf)
     .Show();
-Custom Icons// Using a standard SystemIcon
+// Custom Icons
+// Using a standard SystemIcon
 FlexibleMessageBox.Create()
     .SetText("Information with standard icon.")
     .WithIcon(MessageBoxIcon.Information)
@@ -99,7 +104,9 @@ FlexibleMessageBox.Create()
     .SetText("Message with a custom icon.")
     .WithCustomIcon(myCustomIcon)
     .Show();
-Input FieldsFlexibleDialogResult inputResult = FlexibleMessageBox.Create()
+
+// Input Fields
+FlexibleDialogResult inputResult = FlexibleMessageBox.Create()
     .SetCaption("Feedback")
     .SetText("Please provide your feedback:")
     .AddTextBox("Your comments:") // Label for the textbox
@@ -110,7 +117,8 @@ if (inputResult.DialogResult == DialogResult.OK && !string.IsNullOrEmpty(inputRe
 {
     Console.WriteLine($"Feedback received: {inputResult.InputText}");
 }
-To get multiple input values, it's best to use button callbacks to access the TextBox controls directly on the form instance passed to the callback. FlexibleDialogResult.InputText will only contain the value of the last added TextBox."Don't Show This Again" CheckboxFlexibleDialogResult checkResult = FlexibleMessageBox.Create()
+// To get multiple input values, it's best to use button callbacks to access the TextBox controls directly on the form instance passed to the callback. FlexibleDialogResult.InputText will only contain the value of the last added TextBox."Don't Show This Again" Checkbox
+FlexibleDialogResult checkResult = FlexibleMessageBox.Create()
     .SetText("This is an important tip you might want to see again.")
     .AddDontShowAgainCheckBox("Do not show this tip anymore", defaultChecked: false)
     .Show();
@@ -119,17 +127,24 @@ if (checkResult.DontShowAgainChecked)
 {
     // Save user preference
 }
-Progress BarFlexibleMessageBox.Create()
+
+// Progress Bar
+FlexibleMessageBox.Create()
     .SetCaption("Working...")
     .SetText("Processing your request, please wait.")
     .AddProgressBar(min: 0, max: 100, value: 50, style: ProgressBarStyle.Continuous)
     .WithButtons(MessageBoxButtons.OK) // Or no buttons if it auto-closes
     .Show();
-Note: The progress bar is static in this example. For a dynamic progress bar, you would need to manage the FlexibleMessageBoxForm instance and update the ProgressBar control directly.Timeout / Auto-CloseFlexibleMessageBox.Create()
+// Note: The progress bar is static in this example. For a dynamic progress bar, you would need to manage the FlexibleMessageBoxForm instance and update the ProgressBar control directly
+
+// Timeout / Auto-Close
+FlexibleMessageBox.Create()
     .SetText("This message will self-destruct in 5 seconds...")
     .SetTimeout(5000, DialogResult.Abort) // Closes after 5s, returns Abort
     .Show();
-Custom Button Text & CallbacksFlexibleMessageBox.Create()
+
+// Custom Button Text & Callbacks
+FlexibleMessageBox.Create()
     .SetCaption("Confirmation")
     .SetText("Choose an action:")
     .WithButtons(MessageBoxButtons.YesNoCancel) // Defines which buttons are present
@@ -146,7 +161,9 @@ Custom Button Text & CallbacksFlexibleMessageBox.Create()
         Console.WriteLine("Declined!");
     })
     .Show();
-Stylingvar customStyle = new MessageBoxStyle
+
+// Styling
+var customStyle = new MessageBoxStyle
 {
     Font = new Font("Segoe UI", 10f),
     BackColor = Color.LightSteelBlue,
@@ -160,7 +177,9 @@ FlexibleMessageBox.Create()
     .SetText("This is a styled message box!")
     .WithStyle(customStyle)
     .Show();
-Asynchronous Operationspublic async Task ShowMyMessageAsync()
+
+// Asynchronous Operations
+public async Task ShowMyMessageAsync()
 {
     FlexibleDialogResult asyncResult = await FlexibleMessageBox.Create()
         .SetCaption("Async Operation")
@@ -169,7 +188,8 @@ Asynchronous Operationspublic async Task ShowMyMessageAsync()
     // Continue after dialog is closed
     Console.WriteLine($"Async dialog closed with: {asyncResult.DialogResult}");
 }
-Hyperlink HandlingFlexibleMessageBox.Create()
+// Hyperlink Handling
+FlexibleMessageBox.Create()
     .SetText("Please visit our website: [www.example.com](https://www.example.com) for more info.")
     .AddHyperlinkClickHandler((sender, e) =>
     {
@@ -181,7 +201,15 @@ Hyperlink HandlingFlexibleMessageBox.Create()
         // For now, custom handlers are invoked, then default behavior follows.
     })
     .Show();
-5. LocalizationButton texts can be localized. The FlexibleMessageBox.ButtonTexts dictionary is public static readonly but its content (the string arrays) can be modified if needed, or new LanguageID entries can be added.// Example: Adding French translations (before showing any message box)
+```
+### 5. LocalizationButton texts can be localized. The FlexibleMessageBox.ButtonTexts dictionary is public static readonly but its content (the string arrays) can be modified if needed, or new LanguageID entries can be added.// Example: Adding French translations (before showing any message box)
+```CSharp
 // Ensure FlexibleMessageBox.LanguageID enum has 'fr'
 // FlexibleMessageBox.ButtonTexts.Add(FlexibleMessageBox.LanguageID.fr, new[] { "OK", "Annuler", "&Oui", "&Non", ... }); 
-The message box automatically uses CultureInfo.CurrentUICulture to select the language.CreditsOriginal Author: Jörg ReichertContributors: David Hall, RoinkRTF Mod Author: Chris PringleEnhanced Version (v2.0): Chris
+The message box automatically uses CultureInfo.CurrentUICulture to select the language.
+```
+##Credits
+- Original Author: Jörg Reichert
+- Contributors: David Hall, Roink
+- RTF Mod Author: Chris Pringle
+- Enhanced Version (v2.0): Chris Pringle
