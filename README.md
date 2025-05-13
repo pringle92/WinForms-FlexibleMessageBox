@@ -28,10 +28,6 @@ A flexible and feature-rich replacement for the standard .NET `System.Windows.Fo
 * **Comprehensive Return Value:** `FlexibleDialogResult` provides dialog result, input text, and checkbox state.
 * **Improved Auto-Sizing:** Dynamically adjusts size to fit content and UI elements.
 * **Accessibility Improvements:** Enhanced accessibility for various components.
-* **Event Handling Correction:** Resolved issues with `HyperlinkClickedEvent` invocation, ensuring custom handlers are correctly called from the builder.
-* **Accessibility Fixes (CS0052, CS0051):** Changed accessibility of `FlexibleMessageBoxForm`, `LanguageID`, and `ButtonID` to `public` to resolve inconsistent accessibility errors when using the builder with custom callbacks or accessing `ButtonTexts`.
-* **`ProgressBarStyle` Default Fix (CS0070):** Corrected the default `ProgressBarStyle` in the builder and `AddProgressBar` method to use `System.Windows.Forms.ProgressBarStyle.Blocks` instead of a non-existent value.
-* **`CheckBox.PreferredWidth` Fix (CS1061):** Corrected layout logic to use `CheckBox.Width` (as `AutoSize` is true) instead of a non-existent `PreferredWidth` property.
 
 ## How to Use
 
