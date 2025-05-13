@@ -208,8 +208,8 @@ FlexibleMessageBox.Create()
 ### 5. LocalizationButton texts can be localized. The FlexibleMessageBox.ButtonTexts dictionary is public static readonly but its content (the string arrays) can be modified if needed, or new LanguageID entries can be added.// Example: Adding French translations (before showing any message box)
 ```CSharp
 // Ensure FlexibleMessageBox.LanguageID enum has 'fr'
-// FlexibleMessageBox.ButtonTexts.Add(FlexibleMessageBox.LanguageID.fr, new[] { "OK", "Annuler", "&Oui", "&Non", ... }); 
-The message box automatically uses CultureInfo.CurrentUICulture to select the language.
+FlexibleMessageBox.ButtonTexts.Add(FlexibleMessageBox.LanguageID.fr, new[] { "OK", "Annuler", "&Oui", "&Non", ... }); 
+// The message box automatically uses CultureInfo.CurrentUICulture to select the language.
 ```
 ## Credits
 - Original Author: Jörg Reichert
