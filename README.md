@@ -91,6 +91,7 @@ FlexibleMessageBox.Create()
     .SetCaption("RTF Example")
     .SetRtfText(rtf)
     .Show();
+
 // Custom Icons
 // Using a standard SystemIcon
 FlexibleMessageBox.Create()
@@ -117,6 +118,7 @@ if (inputResult.DialogResult == DialogResult.OK && !string.IsNullOrEmpty(inputRe
 {
     Console.WriteLine($"Feedback received: {inputResult.InputText}");
 }
+
 // To get multiple input values, it's best to use button callbacks to access the TextBox controls directly on the form instance passed to the callback. FlexibleDialogResult.InputText will only contain the value of the last added TextBox."Don't Show This Again" Checkbox
 FlexibleDialogResult checkResult = FlexibleMessageBox.Create()
     .SetText("This is an important tip you might want to see again.")
@@ -188,6 +190,7 @@ public async Task ShowMyMessageAsync()
     // Continue after dialog is closed
     Console.WriteLine($"Async dialog closed with: {asyncResult.DialogResult}");
 }
+
 // Hyperlink Handling
 FlexibleMessageBox.Create()
     .SetText("Please visit our website: [www.example.com](https://www.example.com) for more info.")
@@ -208,7 +211,7 @@ FlexibleMessageBox.Create()
 // FlexibleMessageBox.ButtonTexts.Add(FlexibleMessageBox.LanguageID.fr, new[] { "OK", "Annuler", "&Oui", "&Non", ... }); 
 The message box automatically uses CultureInfo.CurrentUICulture to select the language.
 ```
-##Credits
+## Credits
 - Original Author: Jörg Reichert
 - Contributors: David Hall, Roink
 - RTF Mod Author: Chris Pringle
