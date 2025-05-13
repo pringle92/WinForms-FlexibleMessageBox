@@ -123,8 +123,9 @@ if (inputResult.DialogResult == DialogResult.OK && !string.IsNullOrEmpty(inputRe
 {
     Console.WriteLine($"Feedback received: {inputResult.InputText}");
 }
+// To get multiple input values, it's best to use button callbacks to access the TextBox controls directly on the form instance passed to the callback. FlexibleDialogResult.InputText will only contain the value of the last added
 
-// To get multiple input values, it's best to use button callbacks to access the TextBox controls directly on the form instance passed to the callback. FlexibleDialogResult.InputText will only contain the value of the last added TextBox."Don't Show This Again" Checkbox
+//TextBox."Don't Show This Again" Checkbox
 FlexibleDialogResult checkResult = FlexibleMessageBox.Create()
     .SetText("This is an important tip you might want to see again.")
     .AddDontShowAgainCheckBox("Do not show this tip anymore", defaultChecked: false)
