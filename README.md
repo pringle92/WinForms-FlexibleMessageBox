@@ -85,8 +85,9 @@ if (result.DialogResult == DialogResult.OK)
     // A better way for multiple inputs is to use callbacks to retrieve values.
 }
 ```
-### 4. Feature Examples with BuilderRTF Textstring rtf = @"{\rtf1\ansi This is \b bold\b0 and this is \i italic\i0.}";
 ```CSharp
+### 4. Feature Examples with BuilderRTF Textstring rtf = @"{\rtf1\ansi This is \b bold\b0 and this is \i italic\i0.}"
+
 FlexibleMessageBox.Create()
     .SetCaption("RTF Example")
     .SetRtfText(rtf)
@@ -205,8 +206,9 @@ FlexibleMessageBox.Create()
     })
     .Show();
 ```
-### 5. LocalizationButton texts can be localized. The FlexibleMessageBox.ButtonTexts dictionary is public static readonly but its content (the string arrays) can be modified if needed, or new LanguageID entries can be added.// Example: Adding French translations (before showing any message box)
+### 5. LocalizationButton texts can be localized. The FlexibleMessageBox.ButtonTexts dictionary is public static readonly but its content (the string arrays) can be modified if needed, or new LanguageID entries can be added.
 ```CSharp
+// Example: Adding French translations (before showing any message box)
 // Ensure FlexibleMessageBox.LanguageID enum has 'fr'
 FlexibleMessageBox.ButtonTexts.Add(FlexibleMessageBox.LanguageID.fr, new[] { "OK", "Annuler", "&Oui", "&Non", ... }); 
 // The message box automatically uses CultureInfo.CurrentUICulture to select the language.
